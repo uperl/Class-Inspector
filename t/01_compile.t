@@ -4,7 +4,6 @@
 
 # This test only tests that the module compiles.
 
-
 use strict;
 use lib ();
 use File::Spec::Functions ':ALL';

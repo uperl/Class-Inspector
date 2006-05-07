@@ -1,5 +1,9 @@
 Revision history for Perl extension Class::Inspector.
 
+1.15 Sun  7 May 2006
+	- No functional changes
+	- Upgrading to Module::Install 0.62
+
 1.14 Sun  8 Apr 2006
 	- No functional changes
 	- Moved from older CVS to newer SVN repository
