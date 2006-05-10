@@ -1,11 +1,15 @@
 Revision history for Perl extension Class::Inspector.
 
+1.16 Wed 10 May 2006
+	- This release contains only build-time changes
+	- AutoInstall is only needed for options, so remove auto_install
+
 1.15 Sun  7 May 2006
-	- No functional changes
+	- This release contains only build-time changes
 	- Upgrading to Module::Install 0.62
 
 1.14 Sun  8 Apr 2006
-	- No functional changes
+	- This release contains only build-time changes
 	- Moved from older CVS to newer SVN repository
 	- Upgraded to Module::Install 0.61
 
