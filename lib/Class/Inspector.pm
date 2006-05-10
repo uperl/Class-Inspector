@@ -39,24 +39,22 @@ an easier, more friendly interface to this information.
 
 =cut
 
-# Load Overhead: 236k
-
 use 5.005;
 # We don't want to use strict refs, since we do a lot of things in here
 # that arn't strict refs friendly.
-use strict     qw{vars subs};
+use strict qw{vars subs};
 use File::Spec ();
 
 # Globals
 use vars qw{$VERSION $RE_IDENT $RE_CLASS $UNIX};
 BEGIN {
-	$VERSION = '1.15';
+	$VERSION = '1.16';
 
 	# Predefine some regexs
 	$RE_IDENT = qr/\A[^\W\d]\w*\z/s;
 	$RE_CLASS = qr/\A[^\W\d]\w*(?:(?:'|::)[^\W\d]\w*)*\z/s;
 
-	# Are we on Unix?
+	# Are we on something Unix-like?
 	$UNIX = !! ( $File::Spec::ISA[0] eq 'File::Spec::Unix' );
 }
 
