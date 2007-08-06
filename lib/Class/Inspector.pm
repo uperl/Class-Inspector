@@ -48,11 +48,11 @@ use File::Spec ();
 # Globals
 use vars qw{$VERSION $RE_IDENT $RE_CLASS $UNIX};
 BEGIN {
-	$VERSION = '1.16';
+	$VERSION = '1.17';
 
 	# Predefine some regexs
 	$RE_IDENT = qr/\A[^\W\d]\w*\z/s;
-	$RE_CLASS = qr/\A[^\W\d]\w*(?:(?:'|::)[^\W\d]\w*)*\z/s;
+	$RE_CLASS = qr/\A[^\W\d]\w*(?:(?:'|::)\w+)*\z/s;
 
 	# Are we on something Unix-like?
 	$UNIX = !! ( $File::Spec::ISA[0] eq 'File::Spec::Unix' );
