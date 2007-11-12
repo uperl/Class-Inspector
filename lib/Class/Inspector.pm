@@ -48,7 +48,7 @@ use File::Spec ();
 # Globals
 use vars qw{$VERSION $RE_IDENT $RE_CLASS $UNIX};
 BEGIN {
-  $VERSION = '1.17';
+  $VERSION = '1.18';
 
   # Predefine some regexs
   $RE_IDENT = qr/\A[^\W\d]\w*\z/s;
