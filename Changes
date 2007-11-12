@@ -1,5 +1,12 @@
 Revision history for Perl extension Class::Inspector.
 
+1.18 Thu  8 Nov 2007
+	- Incremental release, no functional changes
+	- Updated to Module::Install 0.68
+	  (This brings META.yml to the current version)
+	- Updated versions of the automated tests that
+	  were causing CPAN Testers failures.
+
 1.17 Mon  6 Aug 2007
 	- Classes with leading numbers after the first :: are permitted
 	- Removing some old cruft from the tests
