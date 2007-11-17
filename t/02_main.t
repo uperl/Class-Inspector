@@ -1,14 +1,14 @@
 #!/usr/bin/perl
 
-# Formal testing for Class::Inspector
+# Unit testing for Class::Inspector
 
-# Do all the tests on ourself, since we know we will be loaded.
-
+# Do all the tests on ourself, where possible, as we know we will be loaded.
 
 use strict;
 BEGIN {
   $|  = 1;
-  $^W = 1;
+        $^W = 1;
+        # $DB::single = 1;
 }
 
 use Test::More tests => 54;
@@ -118,16 +118,21 @@ ok( ! CI->function_exists( BAD, 'function' ),
 
 # Check the methods method.
 # First, defined a new subclass of Class::Inspector with some additional methods
-package Class::Inspector::Dummy;
+CLASS: {
+  package Class::Inspector::Dummy;
 
-use strict;
-use base 'Class::Inspector';
+  use strict;
+  BEGIN {
+    require Class::Inspector;
+    @Class::Inspector::Dummy::ISA = 'Class::Inspector';
+  }
 
-sub _a_first { 1; }
-sub adummy1 { 1; }
-sub _dummy2 { 1; }
-sub dummy3 { 1; }
-sub installed { 1; }
+  sub _a_first { 1; }
+  sub adummy1 { 1; }
+  sub _dummy2 { 1; }
+  sub dummy3 { 1; }
+  sub installed { 1; }
+}
 
 package main;
 
@@ -267,7 +272,7 @@ CLASSES: {
 }
 
 # Check trivial ->find cases
-{
+SCOPE: {
   is( CI->subclasses( '' ), undef, '->subclasses(bad) returns undef'  );
   is( CI->subclasses( BAD ), '',   '->subclasses(none) returns false' );
   my $rv = CI->subclasses( CI );
