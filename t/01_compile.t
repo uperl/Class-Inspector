@@ -1,8 +1,6 @@
 #!/usr/bin/perl
 
-# Load testing for Class::Inspector
-
-# This test only tests that the module compiles.
+# Compile testing for Class::Inspector
 
 use strict;
 BEGIN {
@@ -12,12 +10,6 @@ BEGIN {
 
 use Test::More tests => 2;
 
-
-
-# Check their perl version
 ok( $] >= 5.005, "Your perl is new enough" );
 
-# Does the module load
 use_ok('Class::Inspector');
-
-exit();
