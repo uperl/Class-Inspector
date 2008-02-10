@@ -581,7 +581,7 @@ sub _inc_filename {
 # Convert INC-specific file name to local file name
 sub _inc_to_local {
 	# Shortcut in the Unix case
-	return $_[0] if $UNIX;
+	return $_[1] if $UNIX;
 
 	# On other places, we have to deal with an unusual path that might look
 	# like C:/foo/bar.pm which doesn't fit ANY normal pattern.
