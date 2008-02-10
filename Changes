@@ -1,5 +1,8 @@
 Revision history for Perl extension Class::Inspector.
 
+1.19_01 Mon 11 Feb 2008
+	- Bug fix to adapt to changes to File::Spec
+
 1.18 Thu  8 Nov 2007
 	- Incremental release, no functional changes
 	- Updated to Module::Install 0.68

@@ -46,17 +46,16 @@ use strict qw{vars subs};
 use File::Spec ();
 
 # Globals
-use vars qw{$VERSION $RE_IDENTIFIER $RE_CLASS $UNIX $WIN32};
+use vars qw{$VERSION $RE_IDENTIFIER $RE_CLASS $UNIX};
 BEGIN {
-	$VERSION = '1.18';
+	$VERSION = '1.19_01';
 
 	# Predefine some regexs
 	$RE_IDENTIFIER = qr/\A[^\W\d]\w*\z/s;
-	$RE_CLASS      = qr/\A[^\W\d]\w*(?:(?:'|::)\w+)*\z/s;
+	$RE_CLASS      = qr/\A[^\W\d]\w*(?:(?:\'|::)\w+)*\z/s;
 
 	# Are we on something Unix-like?
 	$UNIX  = !! ( $File::Spec::ISA[0] eq 'File::Spec::Unix'  );
-	$WIN32 = !! ( $File::Spec::ISA[0] eq 'File::Spec::Win32' );
 }
 
 
@@ -152,7 +151,7 @@ Returns the filename on success or C<undef> if the class name is invalid.
 sub filename {
 	my $class = shift;
 	my $name  = $class->_class(shift) or return undef;
-	File::Spec->catfile( split /(?:'|::)/, $name ) . '.pm';
+	File::Spec->catfile( split /(?:\'|::)/, $name ) . '.pm';
 }
 
 =pod
@@ -584,21 +583,14 @@ sub _inc_to_local {
 	# Shortcut in the Unix case
 	return $_[0] if $UNIX;
 
-	my $class    = shift;
-	my $inc_name = shift or return undef;
-
-	# On Win32, we have to deal with an unusual path that might look
+	# On other places, we have to deal with an unusual path that might look
 	# like C:/foo/bar.pm which doesn't fit ANY normal pattern.
-	my ($vol, $dir, $file);
-	if ( $WIN32 ) {
-		if ( $inc_name =~ s/^([a-z]:)// ) {
-			$vol = $1;
-		}
-		(undef, $dir, $file) = File::Spec::Unix->splitpath( $inc_name );
-	} else {
-		my ($vol, $dir, $file) = File::Spec::Unix->splitpath( $inc_name );
-	}
-	$dir = File::Spec->catdir( File::Spec::Unix->splitdir( $dir || "" ) );
+	# Putting it through splitpath/dir and back again seems to normalise
+	# it to a reasonable amount.
+	my $class              = shift;
+	my $inc_name           = shift or return undef;
+	my ($vol, $dir, $file) = File::Spec->splitpath( $inc_name );
+	$dir = File::Spec->catdir( File::Spec->splitdir( $dir || "" ) );
 	File::Spec->catpath( $vol, $dir, $file || "" );
 }
 

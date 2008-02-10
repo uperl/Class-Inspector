@@ -10,21 +10,28 @@ BEGIN {
         $^W = 1;
 }
 
-use Test::More;
+use Test::More tests => 2;
 use Class::Inspector ();
-unless ( $^O eq 'MSWin32' ) {
-	plan( skip_all => 'Only applicable Win32' );
-	exit(0);
+
+
+
+
+#####################################################################
+# Try the simplistic Win32 approach
+
+SKIP: {
+	skip( "Skipping Win32 test", 1 ) unless $^O eq 'MSWin32';
+	my $inc   = 'C:/foo/bar.pm';
+	my $local = Class::Inspector->_inc_to_local($inc);
+	is( $local, 'C:\foo\bar.pm', '->_inc_to_local ok' );
 }
-plan( tests => 1 );
 
 
 
 
 
 #####################################################################
-# Make sure a Unix path is converted correctly
+# More general tests
 
-my $inc   = 'C:/foo/bar.pm';
-my $local = Class::Inspector->_inc_to_local($inc);
-is( $local, 'C:\foo\bar.pm', '->_inc_to_local ok' );
+my $module = Class::Inspector->_inc_to_local($INC{'Class/Inspector.pm'});
+ok( -f $module, 'Found ourself' );
