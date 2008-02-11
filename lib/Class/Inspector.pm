@@ -48,7 +48,15 @@ use File::Spec ();
 # Globals
 use vars qw{$VERSION $RE_IDENTIFIER $RE_CLASS $UNIX};
 BEGIN {
-	$VERSION = '1.20';
+	$VERSION = '1.21_01';
+
+	# If Unicode is available, enable it so that the
+	# pattern matches below match unicode method names.
+	# We can safely ignore any failure here.
+	eval {
+		require utf8;
+		utf8->import;
+	};
 
 	# Predefine some regexs
 	$RE_IDENTIFIER = qr/\A[^\W\d]\w*\z/s;
