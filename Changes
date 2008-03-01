@@ -1,5 +1,9 @@
 Revision history for Perl extension Class::Inspector.
 
+1.22 Sat 1 Mar 2008
+	- 1.21_01 tested ok, moving to production version
+	- No changes
+
 1.21_01 Tue 12 Feb 2008
 	- Adding experimental support for utf8 methods
 	  (as per http://rt.cpan.org/Public/Bug/Display.html?id=28796)
