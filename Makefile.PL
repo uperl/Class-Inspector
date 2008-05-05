@@ -1,4 +1,3 @@
-use strict;
 use inc::Module::Install;
 
 name           'Class-Inspector';
