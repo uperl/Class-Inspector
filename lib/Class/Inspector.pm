@@ -53,10 +53,7 @@ BEGIN {
 	# If Unicode is available, enable it so that the
 	# pattern matches below match unicode method names.
 	# We can safely ignore any failure here.
-	eval {
-		require utf8;
-		utf8->import;
-	};
+	eval "require utf8; utf8->import";
 
 	# Predefine some regexs
 	$RE_IDENTIFIER = qr/\A[^\W\d]\w*\z/s;
