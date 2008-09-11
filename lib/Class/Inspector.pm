@@ -53,6 +53,7 @@ BEGIN {
 	# If Unicode is available, enable it so that the
 	# pattern matches below match unicode method names.
 	# We can safely ignore any failure here.
+	local $@;
 	eval "require utf8; utf8->import";
 
 	# Predefine some regexs
@@ -486,6 +487,7 @@ sub subclasses {
 			# over that (bizarre) class. That would at limit
 			# problems with finding subclasses to only the
 			# modules that have broken ->isa implementation.
+			local $@;
 			eval {
 				if ( $c->isa($name) ) {
 					# Add to the found list, but don't add the class itself
