@@ -41,7 +41,7 @@ an easier, more friendly interface to this information.
 
 use 5.005;
 # We don't want to use strict refs anywhere in this module, since we do a
-# lot of things in here that arn't strict refs friendly.
+# lot of things in here that aren't strict refs friendly.
 use strict qw{vars subs};
 use File::Spec ();
 
@@ -604,10 +604,6 @@ sub _inc_to_local {
 1;
 
 =pod
-
-=head1 TO DO
-
-- Adding Class::Inspector::Functions
 
 =head1 SUPPORT
 
