@@ -30,7 +30,7 @@ Class::Inspector - Get information about a class and its structure
 =head1 DESCRIPTION
 
 Class::Inspector allows you to get information about a loaded class. Most or
-all of this information can be found in other ways, but they arn't always
+all of this information can be found in other ways, but they aren't always
 very friendly, and usually involve a relatively high level of Perl wizardry,
 or strange and unusual looking code. Class::Inspector attempts to provide 
 an easier, more friendly interface to this information.
