@@ -85,19 +85,19 @@ functions, please check the manual for the main module.
 
 The following functions are exported by default.
 
- installed
- loaded
- filename
- functions
- methods
- subclasses
+  installed
+  loaded
+  filename
+  functions
+  methods
+  subclasses
 
 The following functions are exported only by request.
 
- resolved_filename
- loaded_filename
- function_refs
- function_exists
+  resolved_filename
+  loaded_filename
+  function_refs
+  function_exists
 
 All the functions may be imported using the C<:ALL> tag.
 
@@ -113,8 +113,7 @@ For other issues, or commercial enhancement or support, contact the author.
 
 Adam Kennedy E<lt>adamk@cpan.orgE<gt>
 
-Class::Inspector::Functions was added by Steffen Mueller
-E<lt>smueller@cpan.orgE<gt>.
+Steffen Mueller E<lt>smueller@cpan.orgE<gt>
 
 =head1 SEE ALSO
 
@@ -122,7 +121,9 @@ L<http://ali.as/>, L<Class::Handle>
 
 =head1 COPYRIGHT
 
-Copyright 2002 - 2008 Adam Kennedy.
+Copyright 2002 - 2009 Adam Kennedy.
+
+Class::Inspector::Functions copyright 2008 - 2009 Steffen Mueller.
 
 This program is free software; you can redistribute
 it and/or modify it under the same terms as Perl itself.
