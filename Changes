@@ -1,6 +1,7 @@
 Revision history for Perl extension Class-Inspector
 
-1.24 to be released
+1.24 Tue 21 Apr 2009
+	- Updating to Module::Install::DSL 0.83
 	- Add the Class::Inspector::Functions interface.
 
 1.23 Mon  2 Jun 2008
