@@ -48,7 +48,7 @@ use File::Spec ();
 # Globals
 use vars qw{$VERSION $RE_IDENTIFIER $RE_CLASS $UNIX};
 BEGIN {
-	$VERSION = '1.23';
+	$VERSION = '1.24';
 
 	# If Unicode is available, enable it so that the
 	# pattern matches below match unicode method names.
