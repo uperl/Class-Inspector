@@ -1,5 +1,51 @@
 package Class::Inspector::Functions;
 
+use 5.005;
+use strict;
+use Exporter         ();
+use Class::Inspector ();
+
+use vars qw(@ISA @EXPORT @EXPORT_OK %EXPORT_TAGS $VERSION);
+BEGIN {
+  $VERSION = '1.24';
+  @ISA     = 'Exporter';
+
+
+  @EXPORT = qw(
+    installed
+    loaded
+
+    filename
+    functions
+    methods
+
+    subclasses
+  );
+
+  @EXPORT_OK = qw(
+    resolved_filename
+    loaded_filename
+
+    function_refs
+    function_exists
+  );
+    #children
+    #recursive_children
+
+  %EXPORT_TAGS = ( ALL => [ @EXPORT_OK, @EXPORT ] );
+
+  foreach my $meth (@EXPORT, @EXPORT_OK) {
+      my $sub = Class::Inspector->can($meth);
+      no strict 'refs';
+      *{$meth} = sub {&$sub('Class::Inspector', @_)};
+  }
+
+}
+
+1;
+
+__END__
+
 =pod
 
 =head1 NAME
@@ -35,52 +81,6 @@ Class::Inspector::Functions is a function based interface of
 L<Class::Inspector>. For a thorough documentation of the available
 functions, please check the manual for the main module.
 
-=cut
-
-use 5.005;
-use strict;
-use Class::Inspector;
-require Exporter;
-
-# Globals
-use vars qw(@ISA @EXPORT @EXPORT_OK %EXPORT_TAGS $VERSION);
-BEGIN {
-  $VERSION = '1.23';
-  @ISA = qw(Exporter);
-
-
-  @EXPORT = qw(
-    installed
-    loaded
-
-    filename
-    functions
-    methods
-
-    subclasses
-  );
-
-  @EXPORT_OK = qw(
-    resolved_filename
-    loaded_filename
-
-    function_refs
-    function_exists
-  );
-    #children
-    #recursive_children
-
-  %EXPORT_TAGS = ( ALL => [ @EXPORT_OK, @EXPORT ] );
-
-  foreach my $meth (@EXPORT, @EXPORT_OK) {
-      my $sub = Class::Inspector->can($meth);
-      no strict 'refs';
-      *{$meth} = sub {&$sub('Class::Inspector', @_)};
-  }
-
-}
-
-
 =head2 Exports
 
 The following functions are exported by default.
@@ -100,12 +100,6 @@ The following functions are exported only by request.
  function_exists
 
 All the functions may be imported using the C<:ALL> tag.
-
-=cut
-
-1;
-
-=pod
 
 =head1 SUPPORT
 
