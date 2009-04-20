@@ -1,7 +1,8 @@
 package Class::Inspector::Functions;
 
-use 5.005;
+use 5.006;
 use strict;
+use warnings;
 use Exporter         ();
 use Class::Inspector ();
 
