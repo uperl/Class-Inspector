@@ -1,5 +1,11 @@
 Revision history for Perl extension Class-Inspector
 
+1.26_01 Tue 24 Jan 2012
+	- Updating to Module::Install::DSL 1.04
+	- Updating copyright year
+	- Remove usage of defined @{"X::ISA"} to avoid warnings in 5.15.7
+          and later Perl 5.16 (Tom Wyant)
+
 1.25 Thu 27 Jan 2011
 	- Updating to Module::Install::DSL 1.00
 	- Updating copyright year
