@@ -122,7 +122,7 @@ L<http://ali.as/>, L<Class::Handle>
 
 =head1 COPYRIGHT
 
-Copyright 2002 - 2009 Adam Kennedy.
+Copyright 2002 - 2012 Adam Kennedy.
 
 Class::Inspector::Functions copyright 2008 - 2009 Steffen Mueller.
 
