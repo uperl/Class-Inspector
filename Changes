@@ -1,5 +1,8 @@
 Revision history for Perl extension Class-Inspector
 
+1.27 Wed 25 Jan 2012
+	- Moving to prod release
+
 1.26_01 Tue 24 Jan 2012
 	- Updating to Module::Install::DSL 1.04
 	- Updating copyright year
