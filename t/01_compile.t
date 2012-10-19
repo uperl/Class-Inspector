@@ -10,6 +10,6 @@ BEGIN {
 
 use Test::More tests => 2;
 
-ok( $] >= 5.005, "Your perl is new enough" );
+ok( $] >= 5.006, "Your perl is new enough" );
 
 use_ok('Class::Inspector');
