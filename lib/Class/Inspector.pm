@@ -151,7 +151,7 @@ C<@INC> entry.
   print Class->filename( 'Foo::Bar' );
   > Foo/Bar.pm
 
-This filename will be returned with the right seperator for the local
+This filename will be returned with the right separator for the local
 platform, and should work on all platforms.
 
 Returns the filename on success or C<undef> if the class name is invalid.
@@ -172,7 +172,7 @@ For a given class, the C<resolved_filename> static method returns the fully
 resolved filename for a class. That is, the file that the class would be
 loaded from.
 
-This is not nescesarily the file that the class WAS loaded from, as the
+This is not necessarily the file that the class WAS loaded from, as the
 value returned is determined each time it runs, and the C<@INC> include
 path may change.
 
@@ -355,10 +355,10 @@ C<[ 'Class::method1', 'AnotherClass::method2', 'Class::method3' ]>.
 The C<expanded> option will cause a lot more information about method to be 
 returned. Instead of just the method name, you will instead get an array
 reference containing the method name as a single combined name, ala C<full>,
-the seperate class and method, and a CODE ref to the actual function ( if
-available ). Please note that the function reference is not guarenteed to 
-be available. C<Class::Inspector> is intended at some later time, work 
-with modules that have some some of common run-time loader in place ( e.g
+the separate class and method, and a CODE ref to the actual function ( if
+available ). Please note that the function reference is not guaranteed to 
+be available. C<Class::Inspector> is intended at some later time, to work 
+with modules that have some kind of common run-time loader in place ( e.g
 C<Autoloader> or C<Class::Autouse> for example.
 
 The response from C<methods( 'Class', 'expanded' )> would look something like
