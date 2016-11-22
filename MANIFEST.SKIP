@@ -1,0 +1,5 @@
+^.git
+^Class-Inspector-.*
+^Makefile$
+\.bak$
+^MYMETA.(yml|json)$
