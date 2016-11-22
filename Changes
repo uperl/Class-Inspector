@@ -1,5 +1,10 @@
 Revision history for Perl extension Class-Inspector
 
+1.29_01 22 Nov 2016
+	- Fix Makefile.PL to work with Perls without '.' in @INC
+	- Fix for the installed method when used with a PAR archive (rt#42846)
+	- Minor documentation fixes (grammar, spelling: rt#74481, rt#85356)
+
 1.28 Fri 19 Oct 2012
 	- No functional changes
 	- Updating to Module::Install::DSL 1.06
