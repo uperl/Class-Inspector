@@ -11,7 +11,7 @@ BEGIN {
         # $DB::single = 1;
 }
 
-use Test::More tests => 21;
+use Test::More tests => 22;
 use Class::Inspector::Functions;
 
 # To make maintaining this a little faster,
@@ -68,7 +68,18 @@ ok( ($filename eq $inc_filename or index( loaded_filename(CI), $inc_filename ) =
 ok( index( resolved_filename(CI), $filename ) >= 0, "resolved_filename works" );
 ok( ($filename eq $inc_filename or index( resolved_filename(CI), $inc_filename ) == -1), "resolved_filename works" );
 
+unshift @INC, sub {
+	my $coderef  = shift;
+	my $filename = shift;
+	
+	if ($filename eq 'Foo/Bar.pm') {
+		open my $fh, '<', __FILE__;
+		return (undef, $fh);
+	}
+	return
+};
+
 # Check the installed stuff
 ok( installed( CI ), "installed detects installed" );
 ok( ! installed( BAD ), "installed detects not installed" );
-
+ok( installed( 'Foo::Bar'), "installed detects coderef installed" );

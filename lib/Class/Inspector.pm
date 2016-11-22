@@ -87,9 +87,25 @@ or C<undef> if the class name is invalid.
 
 =cut
 
+sub _resolved_inc_handler {
+	my $class    = shift;
+	my $filename = $class->_inc_filename(shift) or return undef;
+	
+	foreach my $inc ( @INC ) {
+		if(ref $inc eq 'CODE') {
+			my @ret = $inc->($inc, $filename);
+			if(@ret) {
+				return 1;
+			}
+		}
+	}
+	
+	'';
+}
+
 sub installed {
 	my $class = shift;
-	!! ($class->loaded_filename($_[0]) or $class->resolved_filename($_[0]));
+	!! ($class->loaded_filename($_[0]) or $class->resolved_filename($_[0]) or $class->_resolved_inc_handler($_[0]));
 }
 
 =pod
