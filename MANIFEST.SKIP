@@ -1,7 +1,0 @@
-^.git
-^Class-Inspector-.*
-^Makefile$
-\.bak$
-^MYMETA.(yml|json)$
-^blib/
-^pm_to_blib$

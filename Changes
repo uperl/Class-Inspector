@@ -1,4 +1,7 @@
-Revision history for Perl extension Class-Inspector
+Revision history for Perl extension {{$dist->name}}
+
+{{$NEXT}}
+  - Migrated from Module::Install to Dist::Zilla and ExtUtils::MakeMaker
 
 1.30 23 Nov 2016
   - Moving to prod release

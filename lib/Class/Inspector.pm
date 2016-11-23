@@ -1,10 +1,8 @@
 package Class::Inspector;
 
+# ABSTRACT: Get information about a class and its structure
+
 =pod
-
-=head1 NAME
-
-Class::Inspector - Get information about a class and its structure
 
 =head1 SYNOPSIS
 
@@ -49,7 +47,7 @@ use File::Spec ();
 # Globals
 use vars qw{$VERSION $RE_IDENTIFIER $RE_CLASS $UNIX};
 BEGIN {
-  $VERSION = '1.30';
+  # VERSION
 
   # If Unicode is available, enable it so that the
   # pattern matches below match unicode method names.
@@ -625,36 +623,8 @@ sub _inc_to_local {
 
 =pod
 
-=head1 SUPPORT
-
-Bugs should be reported via the CPAN bug tracker
-
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Class-Inspector>
-
-For other issues, or commercial enhancement or support, contact the author.
-
-=head1 AUTHOR
-
-The current maintainer is:
-
-Graham Ollis E<lt>plicease@cpan.orgE<gt>
-
-The original author is:
-
-Adam Kennedy E<lt>adamk@cpan.orgE<gt>
-
 =head1 SEE ALSO
 
-L<http://ali.as/>, L<Class::Handle>
-
-=head1 COPYRIGHT
-
-Copyright 2002 - 2012 Adam Kennedy.
-
-This program is free software; you can redistribute
-it and/or modify it under the same terms as Perl itself.
-
-The full text of the license can be found in the
-LICENSE file included with this module.
+L<http://ali.as/>, L<Class::Handle>, L<Class::Inspector::Functions>
 
 =cut

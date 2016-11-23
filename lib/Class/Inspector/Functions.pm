@@ -6,9 +6,11 @@ use warnings;
 use Exporter         ();
 use Class::Inspector ();
 
+# ABSTRACT: Get information about a class and its structure
+
 use vars qw(@ISA @EXPORT @EXPORT_OK %EXPORT_TAGS $VERSION);
 BEGIN {
-  $VERSION = '1.30';
+  # VERSION
   @ISA     = 'Exporter';
 
 
@@ -44,14 +46,6 @@ BEGIN {
 }
 
 1;
-
-__END__
-
-=pod
-
-=head1 NAME
-
-Class::Inspector::Functions - Get information about a class and its structure
 
 =head1 SYNOPSIS
 
@@ -102,34 +96,8 @@ The following functions are exported only by request.
 
 All the functions may be imported using the C<:ALL> tag.
 
-=head1 SUPPORT
-
-Bugs should be reported via the CPAN bug tracker
-
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Class-Inspector>
-
-For other issues, or commercial enhancement or support, contact the author.
-
-=head1 AUTHOR
-
-Adam Kennedy E<lt>adamk@cpan.orgE<gt>
-
-Steffen Mueller E<lt>smueller@cpan.orgE<gt>
-
 =head1 SEE ALSO
 
-L<http://ali.as/>, L<Class::Handle>
-
-=head1 COPYRIGHT
-
-Copyright 2002 - 2012 Adam Kennedy.
-
-Class::Inspector::Functions copyright 2008 - 2009 Steffen Mueller.
-
-This program is free software; you can redistribute
-it and/or modify it under the same terms as Perl itself.
-
-The full text of the license can be found in the
-LICENSE file included with this module.
+L<http://ali.as/>, L<Class::Handle>, L<Class::Inspector>
 
 =cut
