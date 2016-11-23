@@ -7,14 +7,13 @@ use Exporter         ();
 use Class::Inspector ();
 
 # ABSTRACT: Get information about a class and its structure
+# VERSION
 
-use vars qw(@ISA @EXPORT @EXPORT_OK %EXPORT_TAGS $VERSION);
 BEGIN {
-  # VERSION
-  @ISA     = 'Exporter';
+  our @ISA     = 'Exporter';
 
 
-  @EXPORT = qw(
+  our @EXPORT = qw(
     installed
     loaded
 
@@ -25,7 +24,7 @@ BEGIN {
     subclasses
   );
 
-  @EXPORT_OK = qw(
+  our @EXPORT_OK = qw(
     resolved_filename
     loaded_filename
 
@@ -35,7 +34,7 @@ BEGIN {
     #children
     #recursive_children
 
-  %EXPORT_TAGS = ( ALL => [ @EXPORT_OK, @EXPORT ] );
+  our %EXPORT_TAGS = ( ALL => [ @EXPORT_OK, @EXPORT ] );
 
   foreach my $meth (@EXPORT, @EXPORT_OK) {
       my $sub = Class::Inspector->can($meth);

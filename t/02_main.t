@@ -309,16 +309,14 @@ ok( ! Class::Inspector->loaded('Class::Inspector::SpuriousPackage'),
 PACKAGES: {
   # The busted package
   package Class::Inspector::BrokenISA;
-  use vars qw{&isa $VERSION};
-  $VERSION = '0.01';
+  use vars qw{&isa};
+  our $VERSION = '0.01';
   # The test packages
   package My::Foo;
-  use vars qw{$VERSION};
-  $VERSION = '0.01';
+  our $VERSION = '0.01';
   package My::Bar;
-  use vars qw{$VERSION @ISA};
-  $VERSION = '0.01';
-  @ISA     = 'My::Foo';
+  our $VERSION = '0.01';
+  our @ISA     = 'My::Foo';
 }
 TESTS: {
   my $rv = Class::Inspector->subclasses( 'My::Foo' );

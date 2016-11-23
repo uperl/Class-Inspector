@@ -1,8 +1,14 @@
 package Class::Inspector;
 
-# ABSTRACT: Get information about a class and its structure
+use 5.006;
+# We don't want to use strict refs anywhere in this module, since we do a
+# lot of things in here that aren't strict refs friendly.
+use strict qw{vars subs};
+use warnings;
+use File::Spec ();
 
-=pod
+# ABSTRACT: Get information about a class and its structure
+# VERSION
 
 =head1 SYNOPSIS
 
@@ -37,36 +43,20 @@ an easier, more friendly interface to this information.
 
 =cut
 
-use 5.006;
-# We don't want to use strict refs anywhere in this module, since we do a
-# lot of things in here that aren't strict refs friendly.
-use strict qw{vars subs};
-use warnings;
-use File::Spec ();
-
-# Globals
-use vars qw{$VERSION $RE_IDENTIFIER $RE_CLASS $UNIX};
+# If Unicode is available, enable it so that the
+# pattern matches below match unicode method names.
+# We can safely ignore any failure here.
 BEGIN {
-  # VERSION
-
-  # If Unicode is available, enable it so that the
-  # pattern matches below match unicode method names.
-  # We can safely ignore any failure here.
-  SCOPE: {
-    local $@;
-    eval "require utf8; utf8->import";
-  }
-
-  # Predefine some regexs
-  $RE_IDENTIFIER = qr/\A[^\W\d]\w*\z/s;
-  $RE_CLASS      = qr/\A[^\W\d]\w*(?:(?:\'|::)\w+)*\z/s;
-
-  # Are we on something Unix-like?
-  $UNIX  = !! ( $File::Spec::ISA[0] eq 'File::Spec::Unix'  );
+  local $@;
+  eval "require utf8; utf8->import";
 }
 
+# Predefine some regexs
+our $RE_IDENTIFIER = qr/\A[^\W\d]\w*\z/s;
+our $RE_CLASS      = qr/\A[^\W\d]\w*(?:(?:\'|::)\w+)*\z/s;
 
-
+# Are we on something Unix-like?
+our $UNIX  = !! ( $File::Spec::ISA[0] eq 'File::Spec::Unix'  );
 
 
 #####################################################################
