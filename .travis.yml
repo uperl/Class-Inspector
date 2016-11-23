@@ -1,6 +1,7 @@
 language: perl
 sudo: false
 
+install: /bin/true
 script: HARNESS_IS_VERBOSE=1 prove -lvr t
 
 perl:
