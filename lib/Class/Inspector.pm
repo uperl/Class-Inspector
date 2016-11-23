@@ -635,6 +635,12 @@ For other issues, or commercial enhancement or support, contact the author.
 
 =head1 AUTHOR
 
+The current maintainer is:
+
+Graham Ollis E<lt>plicease@cpan.orgE<gt>
+
+The original author is:
+
 Adam Kennedy E<lt>adamk@cpan.orgE<gt>
 
 =head1 SEE ALSO
