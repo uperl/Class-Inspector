@@ -1,5 +1,8 @@
 Revision history for Perl extension Class-Inspector
 
+1.30 23 Nov 2016
+  - Moving to prod release
+
 1.29_02 23 Nov 2016
   - Update metadata to point to github repository.
     Plus some other minor dist meta tweaks.
