@@ -33,7 +33,9 @@ an easier, more friendly interface to this information.
 
 # METHODS
 
-## installed $class
+## installed
+
+    my $bool = Class::Inspector->installed($class);
 
 The `installed` static method tries to determine if a class is installed
 on the machine, or at least available to Perl. It does this by wrapping
@@ -42,7 +44,9 @@ around `resolved_filename`.
 Returns true if installed/available, false if the class is not installed,
 or `undef` if the class name is invalid.
 
-## loaded $class
+## loaded
+
+    my $bool = Class::Inspector->loaded($class);
 
 The `loaded` static method tries to determine if a class is loaded by
 looking for symbol table entries.
@@ -57,7 +61,9 @@ loaded.
 Returns true if the class is loaded, false if not, or `undef` if the
 class name is invalid.
 
-## filename $class
+## filename
+
+    my $filename = Class::Inspector->filename($class);
 
 For a given class, returns the base filename for the class. This will NOT
 be a fully resolved filename, just the part of the filename BELOW the
@@ -71,7 +77,10 @@ platform, and should work on all platforms.
 
 Returns the filename on success or `undef` if the class name is invalid.
 
-## resolved\_filename $class, @try\_first
+## resolved\_filename
+
+    my $filename = Class::Inspector->resolved_filename($class);
+    my $filename = Class::Inspector->resolved_filename($class, @try_first);
 
 For a given class, the `resolved_filename` static method returns the fully
 resolved filename for a class. That is, the file that the class would be
@@ -87,7 +96,9 @@ method.
 Returns the filename for the class, or `undef` if the class name is
 invalid.
 
-## loaded\_filename $class
+## loaded\_filename
+
+    my $filename = Class::Inspector->loaded_filename($class);
 
 For a given loaded class, the `loaded_filename` static method determines
 (via the `%INC` hash) the name of the file that it was originally loaded
@@ -96,7 +107,9 @@ from.
 Returns a resolved file path, or false if the class did not have it's own
 file.
 
-## functions $class
+## functions
+
+    my $arrayref = Class::Inspector->functions($class);
 
 For a loaded class, the `functions` static method returns a list of the
 names of all the functions in the classes immediate namespace.
@@ -106,7 +119,9 @@ Note that this is not the METHODS of the class, just the functions.
 Returns a reference to an array of the function names on success, or `undef`
 if the class name is invalid or the class is not loaded.
 
-## function\_refs $class
+## function\_refs
+
+    my $arrayref = Class::Inspector->function_refs($class);
 
 For a loaded class, the `function_refs` static method returns references to
 all the functions in the classes immediate namespace.
@@ -116,7 +131,9 @@ Note that this is not the METHODS of the class, just the functions.
 Returns a reference to an array of `CODE` refs of the functions on
 success, or `undef` if the class is not loaded.
 
-## function\_exists $class, $function
+## function\_exists
+
+    my $bool = Class::Inspector->function_exists($class, $functon);
 
 Given a class and function name the `function_exists` static method will
 check to see if the function exists in the class.
@@ -127,7 +144,9 @@ exists for a class, use the `can` method for any class or object.
 Returns true if the function exists, false if not, or `undef` if the
 class or function name are invalid, or the class is not loaded.
 
-## methods $class, @options
+## methods
+
+    my $arrayref = Class::Inspector->methods($class, @options);
 
 For a given class name, the `methods` static method will returns ALL
 the methods available to that class. This includes all methods available
@@ -186,7 +205,9 @@ order.
           [ 'Foo::bar',         'Foo',     'bar',     \&Foo::bar         ],
         ]
 
-## subclasses $class
+## subclasses
+
+    my $arrayref = Class::Inspector->subclasses($class);
 
 The `subclasses` static method will search then entire namespace (and thus
 **all** currently loaded classes) to find all classes that are subclasses

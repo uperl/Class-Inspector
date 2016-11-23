@@ -64,7 +64,9 @@ our $UNIX  = !! ( $File::Spec::ISA[0] eq 'File::Spec::Unix'  );
 
 =pod
 
-=head2 installed $class
+=head2 installed
+
+ my $bool = Class::Inspector->installed($class);
 
 The C<installed> static method tries to determine if a class is installed
 on the machine, or at least available to Perl. It does this by wrapping
@@ -98,7 +100,9 @@ sub installed {
 
 =pod
 
-=head2 loaded $class
+=head2 loaded
+
+ my $bool = Class::Inspector->loaded($class);
 
 The C<loaded> static method tries to determine if a class is loaded by
 looking for symbol table entries.
@@ -146,7 +150,9 @@ sub _loaded {
 
 =pod
 
-=head2 filename $class
+=head2 filename
+
+ my $filename = Class::Inspector->filename($class);
 
 For a given class, returns the base filename for the class. This will NOT
 be a fully resolved filename, just the part of the filename BELOW the
@@ -170,7 +176,10 @@ sub filename {
 
 =pod
 
-=head2 resolved_filename $class, @try_first
+=head2 resolved_filename
+
+ my $filename = Class::Inspector->resolved_filename($class);
+ my $filename = Class::Inspector->resolved_filename($class, @try_first);
 
 For a given class, the C<resolved_filename> static method returns the fully
 resolved filename for a class. That is, the file that the class would be
@@ -206,7 +215,9 @@ sub resolved_filename {
 
 =pod
 
-=head2 loaded_filename $class
+=head2 loaded_filename
+
+ my $filename = Class::Inspector->loaded_filename($class);
 
 For a given loaded class, the C<loaded_filename> static method determines
 (via the C<%INC> hash) the name of the file that it was originally loaded
@@ -232,7 +243,9 @@ sub loaded_filename {
 
 =pod
 
-=head2 functions $class
+=head2 functions
+
+ my $arrayref = Class::Inspector->functions($class);
 
 For a loaded class, the C<functions> static method returns a list of the
 names of all the functions in the classes immediate namespace.
@@ -258,7 +271,9 @@ sub functions {
 
 =pod
 
-=head2 function_refs $class
+=head2 function_refs
+
+ my $arrayref = Class::Inspector->function_refs($class);
 
 For a loaded class, the C<function_refs> static method returns references to
 all the functions in the classes immediate namespace.
@@ -286,7 +301,9 @@ sub function_refs {
 
 =pod
 
-=head2 function_exists $class, $function
+=head2 function_exists
+
+ my $bool = Class::Inspector->function_exists($class, $functon);
 
 Given a class and function name the C<function_exists> static method will
 check to see if the function exists in the class.
@@ -313,7 +330,9 @@ sub function_exists {
 
 =pod
 
-=head2 methods $class, @options
+=head2 methods
+
+ my $arrayref = Class::Inspector->methods($class, @options);
 
 For a given class name, the C<methods> static method will returns ALL
 the methods available to that class. This includes all methods available
@@ -464,7 +483,9 @@ sub methods {
 
 =pod
 
-=head2 subclasses $class
+=head2 subclasses
+
+ my $arrayref = Class::Inspector->subclasses($class);
 
 The C<subclasses> static method will search then entire namespace (and thus
 B<all> currently loaded classes) to find all classes that are subclasses
