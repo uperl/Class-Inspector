@@ -1,5 +1,12 @@
 Revision history for Perl extension Class-Inspector
 
+1.29_02 23 Nov 2016
+  - Update metadata to point to github repository.
+    Plus some other minor dist meta tweaks.
+  - Note: planning on doing a migration from Module::Install
+    to ExtUtils::MakeMaker shortly AFTER the next production
+    release.
+
 1.29_01 22 Nov 2016
   - Fix Makefile.PL to work with Perls without '.' in @INC
   - Fix for the installed method when used with a PAR archive (rt#42846)
