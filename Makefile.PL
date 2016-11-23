@@ -7,5 +7,8 @@ all_from      'lib/Class/Inspector.pm';
 requires      'if' => 0;
 requires      'File::Spec' => '0.80';
 test_requires 'Test::More' => '0.47';
+homepage      'https://metacpan.org/pod/Class::Inspector';
+bugtracker    'https://github.com/plicease/Class-Inspector/issues';
+repository    'git://github.com/plicease/FFI-Platypus.git';
 
 WriteAll();
