@@ -368,7 +368,7 @@ C<[ 'Class::method1', 'AnotherClass::method2', 'Class::method3' ]>.
 
 The C<expanded> option will cause a lot more information about method to be 
 returned. Instead of just the method name, you will instead get an array
-reference containing the method name as a single combined name, ala C<full>,
+reference containing the method name as a single combined name, a la C<full>,
 the separate class and method, and a CODE ref to the actual function ( if
 available ). Please note that the function reference is not guaranteed to 
 be available. C<Class::Inspector> is intended at some later time, to work 
