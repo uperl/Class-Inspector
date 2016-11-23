@@ -5,12 +5,7 @@
 # slightly less annoying.
 
 use strict;
-BEGIN {
-  $|  = 1;
-  $^W = 1;
-  # $DB::single = 1;
-}
-
+use warnings;
 use Test::More tests => 22;
 use Class::Inspector::Functions;
 

@@ -5,12 +5,7 @@
 # Do all the tests on ourself, where possible, as we know we will be loaded.
 
 use strict;
-BEGIN {
-  $|  = 1;
-  $^W = 1;
-  # $DB::single = 1;
-}
-
+use warnings;
 use Test::More tests => 54;
 use Class::Inspector ();
 
