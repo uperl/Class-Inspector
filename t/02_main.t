@@ -7,8 +7,8 @@
 use strict;
 BEGIN {
   $|  = 1;
-        $^W = 1;
-        # $DB::single = 1;
+  $^W = 1;
+  # $DB::single = 1;
 }
 
 use Test::More tests => 54;
