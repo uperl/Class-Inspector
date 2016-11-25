@@ -1,7 +1,10 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+
+1.31      2016-11-25 09:33:47 -0500
   - Migrated from Module::Install to Dist::Zilla and ExtUtils::MakeMaker
+  - Fixed meta for repository which was pointing to the wrong URL
 
 1.30 23 Nov 2016
   - Moving to prod release
