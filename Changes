@@ -1,6 +1,9 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+  - The installed method now supports @INC hooks of any type
+    (coderef was supported as of 1.29, now arrayrefs and objects
+    are supported)
 
 1.31      2016-11-25 09:33:47 -0500
   - Migrated from Module::Install to Dist::Zilla and ExtUtils::MakeMaker

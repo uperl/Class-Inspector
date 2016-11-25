@@ -82,8 +82,21 @@ sub _resolved_inc_handler {
   my $filename = $class->_inc_filename(shift) or return undef;
   
   foreach my $inc ( @INC ) {
-    if(ref $inc eq 'CODE') {
+    my $ref = ref $inc;
+    if($ref eq 'CODE') {
       my @ret = $inc->($inc, $filename);
+      if(@ret) {
+        return 1;
+      }
+    }
+    elsif($ref eq 'ARRAY' && ref($inc->[0]) eq 'CODE') {
+      my @ret = $inc->[0]->($inc, $filename);
+      if(@ret) {
+        return 1;
+      }
+    }
+    elsif($ref && eval { $inc->can('INC') }) {
+      my @ret = $inc->INC($filename);
       if(@ret) {
         return 1;
       }
