@@ -6,7 +6,7 @@
 
 use strict;
 use warnings;
-use Test::More;
+use Test::More tests => 24;
 use Class::Inspector::Functions;
 
 # To make maintaining this a little faster,
@@ -99,8 +99,6 @@ ok( ! installed( BAD ), "installed detects not installed" );
 ok( installed( 'Foo::Bar'), "installed detects coderef installed" );
 ok( installed( 'Foo::Baz'), "installed detects arrayref installed" );
 ok( installed( 'Foo::Foo'), "installed detects object installed" );
-
-done_testing;
 
 package
   MyHook;
