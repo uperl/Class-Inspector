@@ -236,6 +236,8 @@ Tom Wyant
 
 Steffen Müller
 
+Kivanc Yazan (KYZN)
+
 # COPYRIGHT AND LICENSE
 
 This software is copyright (c) 2016 by Adam Kennedy.
