@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+
+1.32      2017-08-08 14:12:42 -0400
   - The installed method now supports @INC hooks of any type
     (coderef was supported as of 1.29, now arrayrefs and objects
     are supported)
