@@ -66,7 +66,7 @@ ok( ($filename eq $inc_filename or index( resolved_filename(CI), $inc_filename )
 unshift @INC, sub {
   my $coderef  = shift;
   my $filename = shift;
-  
+
   if ($filename eq 'Foo/Bar.pm') {
     open my $fh, '<', __FILE__;
     return (undef, $fh);
@@ -74,12 +74,12 @@ unshift @INC, sub {
   return
 };
 
-unshift @INC, [ sub { 
+unshift @INC, [ sub {
   my $arrayref = shift;
   my $filename = shift;
 
   die "args wrong" unless
-     ref($arrayref->[0]) eq 'CODE' 
+     ref($arrayref->[0]) eq 'CODE'
   && $arrayref->[1] == 1
   && $arrayref->[2] == 2
   && $arrayref->[3] == 3;
@@ -111,7 +111,7 @@ sub new {
 sub MyHook::INC {
   my($self, $filename) = @_;
   die "self wrong" unless ref $self eq 'MyHook';
-  
+
   if($filename eq 'Foo/Foo.pm') {
     open my $fh, '<', __FILE__;
     return $fh;

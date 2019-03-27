@@ -248,21 +248,21 @@ ok( ! CI->methods( BAD ), "Expanded ->methods fails correctly" );
 # Create the classes to use
 CLASSES: {
   package Foo;
-  
+
   sub foo { 1 };
-  
+
   package Foo::Subclass;
-  
+
   @Foo::Subclass::ISA = 'Foo';
-  
+
   package Bar;
-  
+
   @Bar::ISA = 'Foo';
-  
+
   package This;
-  
+
   sub isa { $_[1] eq 'Foo' ? 1 : undef }
-  
+
   1;
 }
 

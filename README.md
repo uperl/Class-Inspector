@@ -28,7 +28,7 @@ Get information about a class and its structure
 Class::Inspector allows you to get information about a loaded class. Most or
 all of this information can be found in other ways, but they aren't always
 very friendly, and usually involve a relatively high level of Perl wizardry,
-or strange and unusual looking code. Class::Inspector attempts to provide 
+or strange and unusual looking code. Class::Inspector attempts to provide
 an easier, more friendly interface to this information.
 
 # METHODS
@@ -166,7 +166,7 @@ order.
 - public
 
     The `public` option will return only 'public' methods, as defined by the Perl
-    convention of prepending an underscore to any 'private' methods. The `public` 
+    convention of prepending an underscore to any 'private' methods. The `public`
     option will effectively remove any methods that start with an underscore.
 
 - private
@@ -187,12 +187,12 @@ order.
 
 - expanded
 
-    The `expanded` option will cause a lot more information about method to be 
+    The `expanded` option will cause a lot more information about method to be
     returned. Instead of just the method name, you will instead get an array
     reference containing the method name as a single combined name, a la `full`,
     the separate class and method, and a CODE ref to the actual function ( if
-    available ). Please note that the function reference is not guaranteed to 
-    be available. `Class::Inspector` is intended at some later time, to work 
+    available ). Please note that the function reference is not guaranteed to
+    be available. `Class::Inspector` is intended at some later time, to work
     with modules that have some kind of common run-time loader in place ( e.g
     `Autoloader` or `Class::Autouse` for example.
 
