@@ -66,7 +66,11 @@ ok( ($filename eq $inc_filename or index( CI->resolved_filename(CI), $inc_filena
 
 # Check the installed stuff
 ok( CI->installed( CI ), "->installed detects installed" );
-ok( ! CI->installed( BAD ), "->installed detects not installed" );
+ok( ! CI->installed( BAD ), "->installed detects not installed" )
+  || do {
+    diag "\@INC=$_" for @INC;
+    diag "$_=$INC{$_}" for sort keys %INC;
+  };
 
 
 

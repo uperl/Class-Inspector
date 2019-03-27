@@ -1,6 +1,7 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+  - Diagnostic release.
 
 1.32      2017-08-08 14:12:42 -0400
   - The installed method now supports @INC hooks of any type
