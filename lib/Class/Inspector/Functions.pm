@@ -48,26 +48,26 @@ BEGIN {
 
 =head1 SYNOPSIS
 
-  use Class::Inspector::Functions;
-  # Class::Inspector provides a non-polluting,
-  # method based interface!
-  
-  # Is a class installed and/or loaded
-  installed( 'Foo::Class' );
-  loaded( 'Foo::Class' );
-  
-  # Filename related information
-  filename( 'Foo::Class' );
-  resolved_filename( 'Foo::Class' );
-  
-  # Get subroutine related information
-  functions( 'Foo::Class' );
-  function_refs( 'Foo::Class' );
-  function_exists( 'Foo::Class', 'bar' );
-  methods( 'Foo::Class', 'full', 'public' );
-  
-  # Find all loaded subclasses or something
-  subclasses( 'Foo::Class' );
+ use Class::Inspector::Functions;
+ # Class::Inspector provides a non-polluting,
+ # method based interface!
+ 
+ # Is a class installed and/or loaded
+ installed( 'Foo::Class' );
+ loaded( 'Foo::Class' );
+ 
+ # Filename related information
+ filename( 'Foo::Class' );
+ resolved_filename( 'Foo::Class' );
+ 
+ # Get subroutine related information
+ functions( 'Foo::Class' );
+ function_refs( 'Foo::Class' );
+ function_exists( 'Foo::Class', 'bar' );
+ methods( 'Foo::Class', 'full', 'public' );
+ 
+ # Find all loaded subclasses or something
+ subclasses( 'Foo::Class' );
 
 =head1 DESCRIPTION
 
