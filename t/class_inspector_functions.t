@@ -1,5 +1,3 @@
-#!/usr/bin/perl
-
 # Reproduce some of the unit tests in the main unit tests
 # of the method interface, but not all. This makes the maintenance
 # slightly less annoying.

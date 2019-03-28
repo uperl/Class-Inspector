@@ -1,5 +1,3 @@
-#!/usr/bin/perl
-
 # Unit testing for Class::Inspector
 
 # Do all the tests on ourself, where possible, as we know we will be loaded.
