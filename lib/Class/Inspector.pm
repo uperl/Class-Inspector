@@ -12,24 +12,24 @@ use File::Spec ();
 
 =head1 SYNOPSIS
 
-  use Class::Inspector;
-  
-  # Is a class installed and/or loaded
-  Class::Inspector->installed( 'Foo::Class' );
-  Class::Inspector->loaded( 'Foo::Class' );
-  
-  # Filename related information
-  Class::Inspector->filename( 'Foo::Class' );
-  Class::Inspector->resolved_filename( 'Foo::Class' );
-  
-  # Get subroutine related information
-  Class::Inspector->functions( 'Foo::Class' );
-  Class::Inspector->function_refs( 'Foo::Class' );
-  Class::Inspector->function_exists( 'Foo::Class', 'bar' );
-  Class::Inspector->methods( 'Foo::Class', 'full', 'public' );
-  
-  # Find all loaded subclasses or something
-  Class::Inspector->subclasses( 'Foo::Class' );
+ use Class::Inspector;
+ 
+ # Is a class installed and/or loaded
+ Class::Inspector->installed( 'Foo::Class' );
+ Class::Inspector->loaded( 'Foo::Class' );
+ 
+ # Filename related information
+ Class::Inspector->filename( 'Foo::Class' );
+ Class::Inspector->resolved_filename( 'Foo::Class' );
+ 
+ # Get subroutine related information
+ Class::Inspector->functions( 'Foo::Class' );
+ Class::Inspector->function_refs( 'Foo::Class' );
+ Class::Inspector->function_exists( 'Foo::Class', 'bar' );
+ Class::Inspector->methods( 'Foo::Class', 'full', 'public' );
+ 
+ # Find all loaded subclasses or something
+ Class::Inspector->subclasses( 'Foo::Class' );
 
 =head1 DESCRIPTION
 
