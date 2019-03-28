@@ -27,5 +27,5 @@ SKIP: {
 #####################################################################
 # More general tests
 
-my $module = Class::Inspector->_inc_to_local($INC{'Class/Inspector.pm'});
+my $module = Class::Inspector::_inc_to_local($INC{'Class/Inspector.pm'});
 ok( -f $module, 'Found ourself' );
