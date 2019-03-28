@@ -85,7 +85,9 @@ sub _resolved_inc_handler {
     my $ref = ref $inc;
     if($ref eq 'CODE') {
       my @ret = $inc->($inc, $filename);
-      if(@ret) {
+      if(@ret == 1 && ! defined $ret[0]) {
+        # do nothing.
+      } elsif(@ret) {
         return 1;
       }
     }
