@@ -78,7 +78,6 @@ or C<undef> if the class name is invalid.
 =cut
 
 sub _resolved_inc_handler {
-  my $class    = shift;
   my $filename = _inc_filename(shift) or return undef;
 
   foreach my $inc ( @INC ) {
@@ -110,7 +109,7 @@ sub _resolved_inc_handler {
 
 sub installed {
   my $class = shift;
-  !! ($class->loaded_filename($_[0]) or $class->resolved_filename($_[0]) or $class->_resolved_inc_handler($_[0]));
+  !! ($class->loaded_filename($_[0]) or $class->resolved_filename($_[0]) or _resolved_inc_handler($_[0]));
 }
 
 =pod
@@ -137,11 +136,10 @@ class name is invalid.
 sub loaded {
   my $class = shift;
   my $name  = _class(shift) or return undef;
-  $class->_loaded($name);
+  _loaded($name);
 }
 
 sub _loaded {
-  my $class = shift;
   my $name  = shift;
 
   # Handle by far the two most common cases
@@ -535,7 +533,7 @@ sub subclasses {
   my @queue = grep { $_ ne 'main' } _subnames '';
   while ( @queue ) {
     my $c = shift(@queue); # c for class
-    if ( $class->_loaded($c) ) {
+    if ( _loaded($c) ) {
       # At least one person has managed to misengineer
       # a situation in which ->isa could die, even if the
       # class is real. Trap these cases and just skip
