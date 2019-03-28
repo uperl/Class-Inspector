@@ -1,7 +1,9 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
-  - Diagnostic release.
+
+1.33_01   2019-03-27 23:30:09 -0400
+  - Fix compatability with Devel::Hide (gh#6, gh#8).
 
 1.32      2017-08-08 14:12:42 -0400
   - The installed method now supports @INC hooks of any type
