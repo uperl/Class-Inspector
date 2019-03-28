@@ -79,7 +79,7 @@ or C<undef> if the class name is invalid.
 
 sub _resolved_inc_handler {
   my $class    = shift;
-  my $filename = $class->_inc_filename(shift) or return undef;
+  my $filename = _inc_filename(shift) or return undef;
 
   foreach my $inc ( @INC ) {
     my $ref = ref $inc;
@@ -157,7 +157,7 @@ sub _loaded {
 
   # No functions, and it doesn't have a version, and isn't anything.
   # As an absolute last resort, check for an entry in %INC
-  my $filename = $class->_inc_filename($name);
+  my $filename = _inc_filename($name);
   return 1 if defined $INC{$filename};
 
   '';
@@ -214,14 +214,14 @@ invalid.
 
 sub resolved_filename {
   my $class     = shift;
-  my $filename  = $class->_inc_filename(shift) or return undef;
+  my $filename  = _inc_filename(shift) or return undef;
   my @try_first = @_;
 
   # Look through the @INC path to find the file
   foreach ( @try_first, @INC ) {
     my $full = "$_/$filename";
     next unless -e $full;
-    return $UNIX ? $full : $class->_inc_to_local($full);
+    return $UNIX ? $full : _inc_to_local($full);
   }
 
   # File not found
@@ -245,8 +245,8 @@ file.
 
 sub loaded_filename {
   my $class    = shift;
-  my $filename = $class->_inc_filename(shift);
-  $UNIX ? $INC{$filename} : $class->_inc_to_local($INC{$filename});
+  my $filename = _inc_filename(shift);
+  $UNIX ? $INC{$filename} : _inc_to_local($INC{$filename});
 }
 
 
@@ -607,7 +607,7 @@ sub recursive_children {
 
 
 #####################################################################
-# Private Methods
+# Private Functions
 
 # Checks and expands ( if needed ) a class name
 sub _class {
@@ -624,7 +624,6 @@ sub _class {
 # Create a INC-specific filename, which always uses '/'
 # regardless of platform.
 sub _inc_filename {
-  my $class = shift;
   my $name  = _class(shift) or return undef;
   join( '/', split /(?:\'|::)/, $name ) . '.pm';
 }
@@ -632,13 +631,12 @@ sub _inc_filename {
 # Convert INC-specific file name to local file name
 sub _inc_to_local {
   # Shortcut in the Unix case
-  return $_[1] if $UNIX;
+  return $_[0] if $UNIX;
 
   # On other places, we have to deal with an unusual path that might look
   # like C:/foo/bar.pm which doesn't fit ANY normal pattern.
   # Putting it through splitpath/dir and back again seems to normalise
   # it to a reasonable amount.
-  my $class              = shift;
   my $inc_name           = shift or return undef;
   my ($vol, $dir, $file) = File::Spec->splitpath( $inc_name );
   $dir = File::Spec->catdir( File::Spec->splitdir( $dir || "" ) );
