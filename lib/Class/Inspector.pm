@@ -139,7 +139,7 @@ class name is invalid.
 
 sub loaded {
   my $class = shift;
-  my $name  = $class->_class(shift) or return undef;
+  my $name  = _class(shift) or return undef;
   $class->_loaded($name);
 }
 
@@ -188,7 +188,7 @@ Returns the filename on success or C<undef> if the class name is invalid.
 
 sub filename {
   my $class = shift;
-  my $name  = $class->_class(shift) or return undef;
+  my $name  = _class(shift) or return undef;
   File::Spec->catfile( split /(?:\'|::)/, $name ) . '.pm';
 }
 
@@ -277,7 +277,7 @@ if the class name is invalid or the class is not loaded.
 
 sub functions {
   my $class = shift;
-  my $name  = $class->_class(shift) or return undef;
+  my $name  = _class(shift) or return undef;
   return undef unless $class->loaded( $name );
 
   # Get all the CODE symbol table entries
@@ -305,7 +305,7 @@ success, or C<undef> if the class is not loaded.
 
 sub function_refs {
   my $class = shift;
-  my $name  = $class->_class(shift) or return undef;
+  my $name  = _class(shift) or return undef;
   return undef unless $class->loaded( $name );
 
   # Get all the CODE symbol table entries, but return
@@ -336,7 +336,7 @@ class or function name are invalid, or the class is not loaded.
 
 sub function_exists {
   my $class    = shift;
-  my $name     = $class->_class( shift ) or return undef;
+  my $name     = _class( shift ) or return undef;
   my $function = shift or return undef;
 
   # Only works if the class is loaded
@@ -417,7 +417,7 @@ the following.
 
 sub methods {
   my $class     = shift;
-  my $name      = $class->_class( shift ) or return undef;
+  my $name      = _class( shift ) or return undef;
   my @arguments = map { lc $_ } @_;
 
   # Process the arguments to determine the options
@@ -519,13 +519,24 @@ is invalid.
 
 =cut
 
+sub _subnames ($) {
+  my ($name) = @_;
+  return sort
+    grep {
+      substr($_, -2, 2, '') eq '::'
+      and
+      /$RE_IDENTIFIER/o
+    }
+    keys %{"${name}::"};
+}
+
 sub subclasses {
   my $class = shift;
-  my $name  = $class->_class( shift ) or return undef;
+  my $name  = _class( shift ) or return undef;
 
   # Prepare the search queue
   my @found = ();
-  my @queue = grep { $_ ne 'main' } $class->_subnames('');
+  my @queue = grep { $_ ne 'main' } _subnames '';
   while ( @queue ) {
     my $c = shift(@queue); # c for class
     if ( $class->_loaded($c) ) {
@@ -547,21 +558,10 @@ sub subclasses {
     # Add any child namespaces to the head of the queue.
     # This keeps the queue length shorted, and allows us
     # not to have to do another sort at the end.
-    unshift @queue, map { "${c}::$_" } $class->_subnames($c);
+    unshift @queue, map { "${c}::$_" } _subnames $c;
   }
 
   @found ? \@found : '';
-}
-
-sub _subnames {
-  my ($class, $name) = @_;
-  return sort
-    grep {  ## no critic
-      substr($_, -2, 2, '') eq '::'
-      and
-      /$RE_IDENTIFIER/o
-    }
-    keys %{"${name}::"};
 }
 
 
@@ -578,7 +578,7 @@ sub _subnames {
 # Find all the loaded classes below us
 sub children {
   my $class = shift;
-  my $name  = $class->_class(shift) or return ();
+  my $name  = _class(shift) or return ();
 
   # Find all the Foo:: elements in our symbol table
   no strict 'refs';
@@ -588,7 +588,7 @@ sub children {
 # As above, but recursively
 sub recursive_children {
   my $class    = shift;
-  my $name     = $class->_class(shift) or return ();
+  my $name     = _class(shift) or return ();
   my @children = ( $name );
 
   # Do the search using a nicer, more memory efficient
@@ -614,7 +614,6 @@ sub recursive_children {
 
 # Checks and expands ( if needed ) a class name
 sub _class {
-  my $class = shift;
   my $name  = shift or return '';
 
   # Handle main shorthand
@@ -629,7 +628,7 @@ sub _class {
 # regardless of platform.
 sub _inc_filename {
   my $class = shift;
-  my $name  = $class->_class(shift) or return undef;
+  my $name  = _class(shift) or return undef;
   join( '/', split /(?:\'|::)/, $name ) . '.pm';
 }
 

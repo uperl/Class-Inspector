@@ -26,14 +26,14 @@ my $base_private   = $base_functions - $base_public;
 # Begin Tests
 
 # Check the good/bad class code
-ok(   CI->_class( CI ),              'Class validator works for known valid' );
-ok(   CI->_class( BAD ),             'Class validator works for correctly formatted, but not installed' );
-ok(   CI->_class( 'A::B::C::D::E' ), 'Class validator works for long classes' );
-ok(   CI->_class( '::' ),            'Class validator allows main' );
-ok(   CI->_class( '::Blah' ),        'Class validator works for main aliased' );
-ok( ! CI->_class(),                  'Class validator failed for missing class' );
-ok( ! CI->_class( '4teen' ),         'Class validator fails for number starting class' );
-ok( ! CI->_class( 'Blah::%f' ),      'Class validator catches bad characters' );
+ok(   Class::Inspector::_class( CI ),              'Class validator works for known valid' );
+ok(   Class::Inspector::_class( BAD ),             'Class validator works for correctly formatted, but not installed' );
+ok(   Class::Inspector::_class( 'A::B::C::D::E' ), 'Class validator works for long classes' );
+ok(   Class::Inspector::_class( '::' ),            'Class validator allows main' );
+ok(   Class::Inspector::_class( '::Blah' ),        'Class validator works for main aliased' );
+ok( ! Class::Inspector::_class(),                  'Class validator failed for missing class' );
+ok( ! Class::Inspector::_class( '4teen' ),         'Class validator fails for number starting class' );
+ok( ! Class::Inspector::_class( 'Blah::%f' ),      'Class validator catches bad characters' );
 
 
 
