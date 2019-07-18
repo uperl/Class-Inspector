@@ -1,9 +1,17 @@
-use Test2::Require::Module 'Test2::Tools::PerlCritic';
-use Test2::Require::Module 'Perl::Critic';
-use Test2::Require::Module 'Perl::Critic::Freenode';
-use Test2::V0;
-use Perl::Critic;
-use Test2::Tools::PerlCritic;
+use strict;
+use warnings;
+use Test::More;
+
+BEGIN {
+  if(eval { require Test2::Tools::PerlCritic; 1 })
+  {
+    Test2::Tools::PerlCritic->import;
+  }
+  else
+  {
+    plan skip_all => 'Test requires Test2::Tools::PerlCritic';
+  }
+}
 
 my $critic = Perl::Critic->new(
   -profile => 'perlcriticrc',
