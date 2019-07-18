@@ -5,13 +5,12 @@ use strict;
 use warnings;
 use Exporter         ();
 use Class::Inspector ();
+use base qw( Exporter );
 
 # ABSTRACT: Get information about a class and its structure
 # VERSION
 
 BEGIN {
-  our @ISA     = 'Exporter';
-
 
   our @EXPORT = qw(
     installed
