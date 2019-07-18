@@ -17,7 +17,7 @@ script:
 jobs:
   include:
     - env: CIP_TAG=5.31
-    - env: CIP_TAG=5.30
+    - env: CIP_TAG=5.30 PERL_CRITIC=1
     - env: CIP_TAG=5.28
     - env: CIP_TAG=5.26
     - env: CIP_TAG=5.24
