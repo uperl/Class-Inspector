@@ -56,7 +56,5 @@ allow_leading_tabs = 0
 [ValuesAndExpressions::ProhibitMixedBooleanOperators]
 [ValuesAndExpressions::ProhibitSpecialLiteralHeredocTerminator]
 [ValuesAndExpressions::RequireUpperCaseHeredocTerminator]
-[Variables::ProhibitConditionalDeclarations]
 [Variables::ProhibitPerl4PackageNames]
 [Variables::ProhibitUnusedVariables]
-[Variables::RequireLexicalLoopIterators]
