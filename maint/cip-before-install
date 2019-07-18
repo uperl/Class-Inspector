@@ -3,3 +3,4 @@
 set -ex
 
 cip exec cpanm Devel::Hide
+cip sudo dzil-cpanm Dist::Zilla::Plugin::OurPkgVersion
