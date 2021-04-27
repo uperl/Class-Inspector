@@ -517,10 +517,10 @@ is invalid.
 
 =cut
 
-sub _subnames ($) {
+sub _subnames {
   my ($name) = @_;
   return sort
-    grep {
+    grep {  ## no critic (ControlStructures::ProhibitMutatingListFunctions)
       substr($_, -2, 2, '') eq '::'
       and
       /$RE_IDENTIFIER/o
@@ -534,7 +534,7 @@ sub subclasses {
 
   # Prepare the search queue
   my @found = ();
-  my @queue = grep { $_ ne 'main' } _subnames '';
+  my @queue = grep { $_ ne 'main' } _subnames('');
   while ( @queue ) {
     my $c = shift(@queue); # c for class
     if ( _loaded($c) ) {
@@ -556,7 +556,7 @@ sub subclasses {
     # Add any child namespaces to the head of the queue.
     # This keeps the queue length shorted, and allows us
     # not to have to do another sort at the end.
-    unshift @queue, map { "${c}::$_" } _subnames $c;
+    unshift @queue, map { "${c}::$_" } _subnames($c);
   }
 
   @found ? \@found : '';
