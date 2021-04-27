@@ -1,27 +1,29 @@
-# Class::Inspector [![Build Status](https://secure.travis-ci.org/plicease/Class-Inspector.png)](http://travis-ci.org/plicease/Class-Inspector)
+# Class::Inspector ![linux](https://github.com/uperl/Class-Inspector/workflows/linux/badge.svg) ![macos](https://github.com/uperl/Class-Inspector/workflows/macos/badge.svg) ![windows](https://github.com/uperl/Class-Inspector/workflows/windows/badge.svg) ![cygwin](https://github.com/uperl/Class-Inspector/workflows/cygwin/badge.svg) ![msys2-mingw](https://github.com/uperl/Class-Inspector/workflows/msys2-mingw/badge.svg)
 
 Get information about a class and its structure
 
 # SYNOPSIS
 
-    use Class::Inspector;
-    
-    # Is a class installed and/or loaded
-    Class::Inspector->installed( 'Foo::Class' );
-    Class::Inspector->loaded( 'Foo::Class' );
-    
-    # Filename related information
-    Class::Inspector->filename( 'Foo::Class' );
-    Class::Inspector->resolved_filename( 'Foo::Class' );
-    
-    # Get subroutine related information
-    Class::Inspector->functions( 'Foo::Class' );
-    Class::Inspector->function_refs( 'Foo::Class' );
-    Class::Inspector->function_exists( 'Foo::Class', 'bar' );
-    Class::Inspector->methods( 'Foo::Class', 'full', 'public' );
-    
-    # Find all loaded subclasses or something
-    Class::Inspector->subclasses( 'Foo::Class' );
+```perl
+use Class::Inspector;
+
+# Is a class installed and/or loaded
+Class::Inspector->installed( 'Foo::Class' );
+Class::Inspector->loaded( 'Foo::Class' );
+
+# Filename related information
+Class::Inspector->filename( 'Foo::Class' );
+Class::Inspector->resolved_filename( 'Foo::Class' );
+
+# Get subroutine related information
+Class::Inspector->functions( 'Foo::Class' );
+Class::Inspector->function_refs( 'Foo::Class' );
+Class::Inspector->function_exists( 'Foo::Class', 'bar' );
+Class::Inspector->methods( 'Foo::Class', 'full', 'public' );
+
+# Find all loaded subclasses or something
+Class::Inspector->subclasses( 'Foo::Class' );
+```
 
 # DESCRIPTION
 
@@ -35,7 +37,9 @@ an easier, more friendly interface to this information.
 
 ## installed
 
-    my $bool = Class::Inspector->installed($class);
+```perl
+my $bool = Class::Inspector->installed($class);
+```
 
 The `installed` static method tries to determine if a class is installed
 on the machine, or at least available to Perl. It does this by wrapping
@@ -46,7 +50,9 @@ or `undef` if the class name is invalid.
 
 ## loaded
 
-    my $bool = Class::Inspector->loaded($class);
+```perl
+my $bool = Class::Inspector->loaded($class);
+```
 
 The `loaded` static method tries to determine if a class is loaded by
 looking for symbol table entries.
@@ -63,14 +69,18 @@ class name is invalid.
 
 ## filename
 
-    my $filename = Class::Inspector->filename($class);
+```perl
+my $filename = Class::Inspector->filename($class);
+```
 
 For a given class, returns the base filename for the class. This will NOT
 be a fully resolved filename, just the part of the filename BELOW the
 `@INC` entry.
 
-    print Class->filename( 'Foo::Bar' );
-    > Foo/Bar.pm
+```
+print Class->filename( 'Foo::Bar' );
+> Foo/Bar.pm
+```
 
 This filename will be returned with the right separator for the local
 platform, and should work on all platforms.
@@ -79,8 +89,10 @@ Returns the filename on success or `undef` if the class name is invalid.
 
 ## resolved\_filename
 
-    my $filename = Class::Inspector->resolved_filename($class);
-    my $filename = Class::Inspector->resolved_filename($class, @try_first);
+```perl
+my $filename = Class::Inspector->resolved_filename($class);
+my $filename = Class::Inspector->resolved_filename($class, @try_first);
+```
 
 For a given class, the `resolved_filename` static method returns the fully
 resolved filename for a class. That is, the file that the class would be
@@ -98,7 +110,9 @@ invalid.
 
 ## loaded\_filename
 
-    my $filename = Class::Inspector->loaded_filename($class);
+```perl
+my $filename = Class::Inspector->loaded_filename($class);
+```
 
 For a given loaded class, the `loaded_filename` static method determines
 (via the `%INC` hash) the name of the file that it was originally loaded
@@ -109,7 +123,9 @@ file.
 
 ## functions
 
-    my $arrayref = Class::Inspector->functions($class);
+```perl
+my $arrayref = Class::Inspector->functions($class);
+```
 
 For a loaded class, the `functions` static method returns a list of the
 names of all the functions in the classes immediate namespace.
@@ -121,7 +137,9 @@ if the class name is invalid or the class is not loaded.
 
 ## function\_refs
 
-    my $arrayref = Class::Inspector->function_refs($class);
+```perl
+my $arrayref = Class::Inspector->function_refs($class);
+```
 
 For a loaded class, the `function_refs` static method returns references to
 all the functions in the classes immediate namespace.
@@ -133,7 +151,9 @@ success, or `undef` if the class is not loaded.
 
 ## function\_exists
 
-    my $bool = Class::Inspector->function_exists($class, $functon);
+```perl
+my $bool = Class::Inspector->function_exists($class, $functon);
+```
 
 Given a class and function name the `function_exists` static method will
 check to see if the function exists in the class.
@@ -146,7 +166,9 @@ class or function name are invalid, or the class is not loaded.
 
 ## methods
 
-    my $arrayref = Class::Inspector->methods($class, @options);
+```perl
+my $arrayref = Class::Inspector->methods($class, @options);
+```
 
 For a given class name, the `methods` static method will returns ALL
 the methods available to that class. This includes all methods available
@@ -160,8 +182,10 @@ A number of options are available to the `methods` method that will alter
 the results returned. These should be listed after the class name, in any
 order.
 
-    # Only get public methods
-    my $method = Class::Inspector->methods( 'My::Class', 'public' );
+```perl
+# Only get public methods
+my $method = Class::Inspector->methods( 'My::Class', 'public' );
+```
 
 - public
 
@@ -199,15 +223,19 @@ order.
     The response from `methods( 'Class', 'expanded' )` would look something like
     the following.
 
-        [
-          [ 'Class::method1',   'Class',   'method1', \&Class::method1   ],
-          [ 'Another::method2', 'Another', 'method2', \&Another::method2 ],
-          [ 'Foo::bar',         'Foo',     'bar',     \&Foo::bar         ],
-        ]
+    ```
+    [
+      [ 'Class::method1',   'Class',   'method1', \&Class::method1   ],
+      [ 'Another::method2', 'Another', 'method2', \&Another::method2 ],
+      [ 'Foo::bar',         'Foo',     'bar',     \&Foo::bar         ],
+    ]
+    ```
 
 ## subclasses
 
-    my $arrayref = Class::Inspector->subclasses($class);
+```perl
+my $arrayref = Class::Inspector->subclasses($class);
+```
 
 The `subclasses` static method will search then entire namespace (and thus
 **all** currently loaded classes) to find all classes that are subclasses
