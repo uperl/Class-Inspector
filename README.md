@@ -1,4 +1,4 @@
-# Class::Inspector ![linux](https://github.com/uperl/Class-Inspector/workflows/linux/badge.svg) ![macos](https://github.com/uperl/Class-Inspector/workflows/macos/badge.svg) ![windows](https://github.com/uperl/Class-Inspector/workflows/windows/badge.svg) ![cygwin](https://github.com/uperl/Class-Inspector/workflows/cygwin/badge.svg) ![msys2-mingw](https://github.com/uperl/Class-Inspector/workflows/msys2-mingw/badge.svg)
+# Class::Inspector ![static](https://github.com/uperl/Class-Inspector/workflows/static/badge.svg) ![linux](https://github.com/uperl/Class-Inspector/workflows/linux/badge.svg) ![macos](https://github.com/uperl/Class-Inspector/workflows/macos/badge.svg) ![windows](https://github.com/uperl/Class-Inspector/workflows/windows/badge.svg) ![cygwin](https://github.com/uperl/Class-Inspector/workflows/cygwin/badge.svg) ![msys2-mingw](https://github.com/uperl/Class-Inspector/workflows/msys2-mingw/badge.svg)
 
 Get information about a class and its structure
 
@@ -268,7 +268,7 @@ Kivanc Yazan (KYZN)
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2002-2019 by Adam Kennedy.
+This software is copyright (c) 2002-2022 by Adam Kennedy.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
