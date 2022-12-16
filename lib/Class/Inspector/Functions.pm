@@ -96,6 +96,6 @@ All the functions may be imported using the C<:ALL> tag.
 
 =head1 SEE ALSO
 
-L<http://ali.as/>, L<Class::Handle>, L<Class::Inspector>
+L<Class::Handle>, L<Class::Inspector>
 
 =cut

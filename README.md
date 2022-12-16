@@ -250,7 +250,7 @@ is invalid.
 
 # SEE ALSO
 
-[http://ali.as/](http://ali.as/), [Class::Handle](https://metacpan.org/pod/Class::Handle), [Class::Inspector::Functions](https://metacpan.org/pod/Class::Inspector::Functions)
+[Class::Handle](https://metacpan.org/pod/Class::Handle), [Class::Inspector::Functions](https://metacpan.org/pod/Class::Inspector::Functions)
 
 # AUTHOR
 

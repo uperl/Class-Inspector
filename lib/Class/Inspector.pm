@@ -655,6 +655,6 @@ sub _inc_to_local {
 
 =head1 SEE ALSO
 
-L<http://ali.as/>, L<Class::Handle>, L<Class::Inspector::Functions>
+L<Class::Handle>, L<Class::Inspector::Functions>
 
 =cut
