@@ -1,2 +1,4 @@
 /Class-Inspector-*
 /.build
+*.old
+*.orig
