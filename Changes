@@ -1,6 +1,9 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+  - The implementation now lives in Class::Inspector::Functions; the
+    Class::Inspector class methods are thin wrappers around those functions.
+    No user-visible behavior change.
 
 1.36      2019-07-19 08:35:53 -0400
   - Producton release identical to 1.35_01
