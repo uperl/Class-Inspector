@@ -14,8 +14,8 @@ use constant CI  => 'Class::Inspector';
 use constant BAD => 'Class::Inspector::Nonexistant';
 
 # How many functions and public methods are there in Class::Inspector
-my $base_functions = 18;
-my $base_public    = 12;
+my $base_functions = 19;
+my $base_public    = 13;
 my $base_private   = $base_functions - $base_public;
 
 

@@ -29,6 +29,10 @@ use Class::Inspector::Functions ();
   # Find all loaded subclasses or something
   Class::Inspector->subclasses( 'Foo::Class' );
 
+  # Alternatively, import the function based interface directly
+  use Class::Inspector qw( installed );
+  installed( 'Foo::Class' );
+
 =head1 DESCRIPTION
 
 Class::Inspector allows you to get information about a loaded class. Most or
@@ -36,6 +40,14 @@ all of this information can be found in other ways, but they aren't always
 very friendly, and usually involve a relatively high level of Perl wizardry,
 or strange and unusual looking code. Class::Inspector attempts to provide
 an easier, more friendly interface to this information.
+
+Class::Inspector normally provides a non-polluting, method based
+interface. If you would prefer the function based interface, functions
+may be imported directly from Class::Inspector, for example
+C<use Class::Inspector qw( installed )>, as a convenient alternative to
+C<use Class::Inspector::Functions qw( installed )>. See
+L<Class::Inspector::Functions> for the list of functions available for
+import and their behavior.
 
 =head1 METHODS
 
@@ -46,6 +58,18 @@ an easier, more friendly interface to this information.
 our $RE_IDENTIFIER = $Class::Inspector::Functions::RE_IDENTIFIER;
 our $RE_CLASS      = $Class::Inspector::Functions::RE_CLASS;
 our $UNIX          = $Class::Inspector::Functions::UNIX;
+
+# Allow the function based interface to be imported directly from
+# Class::Inspector, so that eg C<use Class::Inspector qw( installed )>
+# works the same as C<use Class::Inspector::Functions qw( installed )>.
+# With no import list (including the explicit empty list from
+# C<use Class::Inspector ();>) nothing is exported, preserving the
+# original method-only interface.
+sub import {
+  my $class = shift;
+  return unless @_;
+  Class::Inspector::Functions->export_to_level(1, $class, @_);
+}
 
 # Build a method for every function implemented in
 # Class::Inspector::Functions.  Each wrapper simply discards the invocant

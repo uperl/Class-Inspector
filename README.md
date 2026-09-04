@@ -23,6 +23,10 @@ Class::Inspector->methods( 'Foo::Class', 'full', 'public' );
 
 # Find all loaded subclasses or something
 Class::Inspector->subclasses( 'Foo::Class' );
+
+# Alternatively, import the function based interface directly
+use Class::Inspector qw( installed );
+installed( 'Foo::Class' );
 ```
 
 # DESCRIPTION
@@ -32,6 +36,14 @@ all of this information can be found in other ways, but they aren't always
 very friendly, and usually involve a relatively high level of Perl wizardry,
 or strange and unusual looking code. Class::Inspector attempts to provide
 an easier, more friendly interface to this information.
+
+Class::Inspector normally provides a non-polluting, method based
+interface. If you would prefer the function based interface, functions
+may be imported directly from Class::Inspector, for example
+`use Class::Inspector qw( installed )`, as a convenient alternative to
+`use Class::Inspector::Functions qw( installed )`. See
+[Class::Inspector::Functions](https://metacpan.org/pod/Class::Inspector::Functions) for the list of functions available for
+import and their behavior.
 
 # METHODS
 
