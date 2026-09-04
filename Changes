@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+
+1.37_01   2026-09-04 09:00:27 -0600
   - The implementation now lives in Class::Inspector::Functions; the
     Class::Inspector class methods are thin wrappers around those functions.
     No user-visible behavior change.
