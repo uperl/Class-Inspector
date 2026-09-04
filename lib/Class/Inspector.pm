@@ -37,10 +37,6 @@ very friendly, and usually involve a relatively high level of Perl wizardry,
 or strange and unusual looking code. Class::Inspector attempts to provide
 an easier, more friendly interface to this information.
 
-The actual implementation lives in L<Class::Inspector::Functions>; each of
-the class methods below is a thin wrapper that drops the invocant and
-forwards to the function of the same name.
-
 =head1 METHODS
 
 =cut
